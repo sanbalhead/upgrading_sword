@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+    {% include 'include/header.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>UPGRADING SWORD</title>
+    <link rel="shortcut icon" type="image/x-icon" href="file:///C:/Users/admin/Desktop/%EC%9A%A9%EC%A4%80/%EA%B0%84%EC%A7%80%EB%82%98%EB%8A%94%20%EA%B2%80.png">
+    <h1 style="font-size: 2cm; text-align: center; margin-top: 3%;">검 이름</h1>
+</head>
+
+<script>
+
+    function successLogic(){
+
+    }
+
+    $(document).ready(function(){
+
+        var url = "/api/usersword/"
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(data) {
+                
+                console.log(data)
+                printUserSwordList(data)
+
+            },
+           
+        });
+
+
+        function printUserSwordList(data) {
+
+
+
+            console.log(data.length)
+
+            for (var i=0; i<data.length; i++) {
+                console.log(data[i]['name'])
+                var row = "<tr>" +
+                          " <th>" + data[i]['sword_name']  + "</th>" +
+                          " <th>" + data[i]['sword_level'] + "</th>" +
+                          "</tr>";
+            
+            console.log(row)
+            $('#userSwordList').append(row)
+
+
+
+            }
+
+        }
+
+    });
+
+</script>
+
+<style>
+    
+    a:link    { color: black; text-decoration: none;}
+    a:visited { color: black; text-decoration: none }
+    a:hover   { color: black; text-decoration: none }
+    a:active  { color: black; text-decoration: none }
+    
+    
+</style>
+
+<body style="background-color: rgb(200, 200, 200);">
+    
+    <div style="width: 100%; float: left;">
+        <div style="display: inline-block; width: 30%;">
+            <a href="/shop" style="font-size: 1.5cm; margin-left: 5%;">상점</a><br>
+            <a href="/item" style="font-size: 1.5cm; margin-left: 5%;">자원</a><br>
+            <a href="/ranking" style="font-size: 1.5cm; margin-left: 5%;">랭킹</a><br>
+            <h1>강화가격 : 10000</h1>
+            <h1>판매가격 : 5000</h1>
+            <h1>강화확률 : 100%</h1>
+        </div>
+        
+        <div style="display:inline-block; width: 30%; text-align: center;">
+            <img src="/image/sword1.png" width="400px" height="400px">
+        </div>
+        
+        <div style="display:inline-block; width: 30%;">
+            <table id="userSwordTable" style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 10%;">
+                <thead>
+                    <tr style="background-color: rgb(140, 140, 140); ">
+                        <th>이름</th>
+                        <th>레벨</th>
+                    </tr>
+                </thead>
+                <tbody id="userSwordList">
+    
+                </tbody>           
+            </table>
+        </div>
+    </div>
+   
+    <div style="width:100vw; text-align: center;">
+        <input type="submit" value="강화하기">
+    </div>
+    
+</body>
+</html>

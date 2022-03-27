@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko" style="background-color: rgb(200, 200, 200);">
+{% include 'include/header.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>UPGRADING SWORD</title>
+    <link rel="shortcut icon" type="image/x-icon" href="file:///C:/Users/admin/Desktop/%EC%9A%A9%EC%A4%80/%EA%B0%84%EC%A7%80%EB%82%98%EB%8A%94%20%EA%B2%80.png">
+</head>
+
+<script>
+
+    function successLogic(){
+
+    }
+
+    $(document).ready(function(){
+
+        var url = "/api/usersword/"
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(data) {
+
+                console.log(data)
+                printUserSwordList(data)
+
+            },
+
+        });
+
+
+        function printUserSwordList(data) {
+
+
+
+            console.log(data.length)
+
+            for (var i=0; i<data.length; i++) {
+                console.log(data[i]['name'])
+                var row = "<tr>" +
+                          " <th>" + data[i]['sword_name']  + "</th>" +
+                          " <th>" + data[i]['sword_level'] + "</th>" +
+                          " <th>" + "팔기" + "<th>"
+                          "</tr>";
+    
+            console.log(row)
+            $('#userSwordList').append(row)
+
+
+
+            }
+
+        }
+
+    });
+
+    
+</script>
+
+<style>
+    
+    a:link    { color: black; text-decoration: none;}
+    a:visited { color: black; text-decoration: none }
+    a:hover   { color: black; text-decoration: none }
+    a:active  { color: black; text-decoration: none }
+    
+    
+</style>
+
+<body>
+    <div>
+        <h1 style="text-align: center; margin-top: 10%;">상점</h1>
+    </div>
+
+    <div>
+        <table style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 10%;">
+            <tr style="background-color: rgb(140, 140, 140); ">
+                <th>아이템</th>
+                <th>가격</th>
+                <th>구입</th>
+            </tr>
+            <tr>
+                <th>깨짐방지권</th>
+                <th>100000원</th>
+                <th id="buy1">구입</th>
+            </tr>
+            <tr>
+                <th>랜덤 확률로 10단계 검 강화</th>
+                <th>1000000원</th>
+                <th>구입</th>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h1 style="text-align: center; margin-top: 5%;">나의 검</h1>
+    </div>
+    
+    <div>
+        <table id='userSwordList' style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 3%;">
+            <tr style="background-color: rgb(140, 140, 140); ">
+                <th>이름</th>
+                <th>레벨</th>
+                <th>팔기</th>
+            </tr>
+
+        </table>
+    </div>
+    
+    
+    <div style="text-align: center; font-size: 1cm; margin-top: 10%;">
+        <a href="/game">돌아가기</a>
+    </div>
+    
+</body>
+</html>
