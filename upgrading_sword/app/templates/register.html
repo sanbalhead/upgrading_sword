@@ -2,7 +2,12 @@
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 {% block content %}
-    <div class="page-inner">
+<head>
+    <title>UPGRADING SWORD</title>
+    <link rel="shortcut icon" type="image/x-icon" href="file:///C:/Users/admin/Desktop/%EC%9A%A9%EC%A4%80/%EA%B0%84%EC%A7%80%EB%82%98%EB%8A%94%20%EA%B2%80.png">
+</head>
+<body style="background-color: rgb(200,200,200);">
+    <div class="page-inner" style="text-align: center;">
         <div class="page-header">
             <h4 class="page-title">회원가입</h4>
             
@@ -98,7 +103,7 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <button type="submit" class="btn btn-success">가입하기</button>
+                            <button type="submit" class="btn btn-success" style="margin: auto; display: block;">가입하기</button>
                             &nbsp; &nbsp;
                             <br>
                             <span>이미 계정이 있나요?</span> <a href="{% url 'login' %}" >로그인</a>
@@ -108,6 +113,8 @@
             </div>
         </div>
     </div>
+</body>
+    
 {% endblock content %}
 <!-- Specific JS goes HERE -->
 <!-- {% block javascripts %}{% endblock javascripts %} -->
